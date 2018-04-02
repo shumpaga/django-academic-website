@@ -1,0 +1,222 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal website of Alexandre Gbaguidi Aïsse aka Shumpaga. You'll find here...">
+    <meta name="author"      content="Alexandre Gbaguidi Aïsse">
+    <title>{% block title %}Shumpaga{% endblock %}</title>
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css">
+    <link  href="http://fonts.googleapis.com/css?family=Cormorant:regular" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/gt_favicon.png' %}">
+    <!--[if lt IE 9]> <script src="{% static 'js/html5shiv.js' %}"></script> <![endif]-->
+    <!-- Github -->
+    <link rel="stylesheet" href="http://github-profile.com/dist/gh-profile-card.min.css" />
+    <script type="text/javascript" src="http://github-profile.com/dist/gh-profile-card.min.js"></script>
+  </head>
+
+  <body class="home">
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="container-fluid">
+      <header>
+        <div class="row">
+          <h1 class="text-center">Shumpaga</h1>
+        </div>
+        <div class="row">
+          <nav class="navbar navbar-default navbar-sticky" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle"
+                data-toggle="collapse" data-target="#navigationbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse top-nav" id="navigationbar">
+              <ul class="nav navbar-nav">
+                <li {% if request.resolver_match.url_name == "about" %}
+                      class=active
+                    {% endif %}>
+                  <a href="{% url 'about' %}">About</a>
+                </li>
+                <li {% if request.resolver_match.url_name == "work" %}
+                      class=active
+                    {% endif %}>
+                  <a href="{% url 'work' %}">Work</a>
+                </li>
+                <li {% if request.resolver_match.url_name == "music" %}
+                      class=active
+                    {% endif %}>
+                  <a href="{% url 'music' %}">Music</a>
+                </li>
+                <li {% if request.resolver_match.url_name == "thoughts" %}
+                      class=active
+                    {% endif %}>
+                  <a href="{% url 'thoughts' %}">Thought Sketches</a>
+                </li>
+                <li {% if request.resolver_match.url_name == "trips" %}
+                      class=active
+                    {% endif %}>
+                  <a href="{% url 'trips' %}">Trips</a>
+                </li>
+                <li {% if request.resolver_match.url_name == "contact" %}
+                      class=active
+                    {% endif %}>
+                  <a href="{% url 'contact' %}">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+    </div>
+    <div class="container-fluid">
+      <div class="row main-body">
+        {% get_current_language as LANGUAGE_CODE %}
+
+        <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:280px; height:660px;" id="mySidebar">
+          <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">
+            {% if LANGUAGE_CODE == "fr" %}
+              Fermer &times;
+            {% else %}
+              Close &times;
+            {% endif %}
+          </button>
+          <div class="row sidebar-element">
+            <form name="ui" action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+              {% if LANGUAGE_CODE == "fr" %}
+                <input name="language" type="hidden" value="en" />
+                <input type="submit" class="push_button" value="Switch to english" />
+              {% else %}
+                <input name="language" type="hidden" value="fr" />
+                <input type="submit" class="push_button" value="Traduire en français" />
+              {% endif %}
+            </form>
+          </div>
+          <div class="row sidebar-element">
+            <a class="twitter-timeline" data-width="260" data-height="300" data-theme="dark" href="https://twitter.com/shumpaga?ref_src=twsrc%5Etfw">
+              {% if LANGUAGE_CODE == "fr" %}
+                Tweets de shumpaga
+              {% else %}
+                Tweets by shumpaga
+              {% endif %}
+            </a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+          <div class="row sidebar-element">
+            <div id="github-card"
+                 data-sort-by="updateTime"
+                 data-header-text="Last updated repository"
+                 data-max-repos="1"
+                 data-username="shumpaga">
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-main" style="margin-left:280px">
+          <div class="col-sm-12">
+            <button class="push_button w3-xlarge w3-hide-large" onclick="w3_open()">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          {% block content %}
+          {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="container-fluid">
+        <div class="row">
+          <p class="col-sm-4 footer-elt">
+            <a href="mailto:contact@shumpaga.com">contact@shumpaga.com</a>
+          </p>
+          <div class="col-sm-4 footer-elt">
+            <a href="https://linkedin.com/in/alexandregbaguidiaisse"
+               class="social-icon" target="_blank">
+              <i class="fa fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://twitter.com/shumpaga"
+               class="social-icon" target="_blank">
+              <i class="fa fa-twitter fa-2x"></i>
+            </a>
+            <a href="https://github.com/shumpaga"
+               class="social-icon" target="_blank">
+              <i class="fa fa-github fa-2x"></i>
+            </a>
+            <a href="https://stackoverflow.com/users/6514500/shump"
+               class="social-icon" target="_blank">
+              <i class="fa fa-stack-overflow fa-2x"></i>
+            </a>
+          </div>
+          <p class="col-sm-4 footer-elt">
+            Copyright &copy; 2017, Alexandre Gbaguidi Aïsse<br>
+          </p>
+        </div> <!-- /row of widgets -->
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/template.js' %}"></script>
+    <!-- Twitter follow link -->
+    <script>
+      window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id))
+            return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+
+          t._e = [];
+          t.ready = function(f) {
+          t._e.push(f);
+        };
+        return t;
+      }(document, "script", "twitter-wjs"));
+    </script>
+    <!-- Githup follow link -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+    <!-- SideBar -->
+    <script>
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+      }
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+      }
+    </script>
+   </body>
+</html>

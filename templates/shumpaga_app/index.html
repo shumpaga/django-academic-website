@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Shumpaga{% endblock %}
+{% block content %}
+<main id="main">
+<div class="container-fluid">
+  <div class="row section about topspace">
+    <div class="col-sm-1 col-sm-offset-1">
+      <img class="img-circle" src="{% static "images/me.jpg" %}">
+    </div> <!-- / section -->
+    <div class ="col-sm-10">
+      <div class="shadow-box about-text">
+        {{ about | safe }}
+      </div>
+    </div>
+  </div>
+  <div class="row section">
+    <div class="col-sm-12">
+    <div id="github-widget" data-user="shumpaga" data-display="pop_repos">
+    </div>
+    <script src="https://gh-widget.oyanglul.us/index.js"></script>
+    </div>
+  </div>
+</div>	<!-- /container -->
+</main>
+{% endblock content %}

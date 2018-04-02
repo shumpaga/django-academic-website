@@ -1,0 +1,22 @@
+Recent
+------
+-minutes to read
+-second button style for comment and subscribing
+-tag system
+
+Development
+-----------
+- change newsletter/*.txt contents
+- check all visible content on the website
+- check all css classes that are not used and not defined in css
+
+Production
+----------
+- Set up mail sending on server
+- Custom errors page (https://docs.djangoproject.com/en/1.11/topics/http/views/#customizing-error-views)
+- BACKUP database
+- Set up logs (https://docs.djangoproject.com/en/1.11/topics/logging/)
+- Configure mails for contact page
+- Change <li></li> display with form's fields required
+- Add article name in url
+- Add french-english translations

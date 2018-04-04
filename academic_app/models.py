@@ -38,7 +38,7 @@ class Post(models.Model):
         return self.title_en
 
 
-class OccupiedPosts(models.Model):
+class OccupiedPost(models.Model):
     description_fr = models.CharField(max_length=300)
     description_en = models.CharField(max_length=300)
     institution = models.CharField(max_length=300)

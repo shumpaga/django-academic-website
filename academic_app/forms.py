@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment
+from .models import Post
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -13,8 +13,3 @@ class ContactForm(forms.Form):
             label="What do you want to talk about ?", required=True)
     content = forms.CharField(help_text="", label="Tell me everything...",
             required=True, widget=forms.Textarea)
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ('author', 'text',)

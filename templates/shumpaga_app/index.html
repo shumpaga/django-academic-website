@@ -4,13 +4,112 @@
 {% block content %}
 <main id="main">
 <div class="container-fluid">
-  <div class="row section about topspace">
-    <div class="col-sm-1 col-sm-offset-1">
-      <img class="img-circle" src="{% static "images/me.jpg" %}">
-    </div> <!-- / section -->
-    <div class ="col-sm-10">
-      <div class="shadow-box about-text">
+  <div class="row section1">
+    <div class="col-sm-3 col-sm-offset-1">
+      <img class="img-classic" src="{% static "images/bio.jpg" %}">
+    </div>
+    <div class="col-sm-7">
+      <div class="biography">
+        <h1>
+          {% if LANGUAGE_CODE == "fr" %}
+            Biographie
+          {% else %}
+            Biography
+          {% endif %}
+        </h1>
+        <hr class="dash-line"/>
         {{ about | safe }}
+      </div>
+    </div>
+  </div>
+  <div class="row section2">
+    <div class="col-sm-12">
+      <h1>
+        {% if LANGUAGE_CODE == "fr" %}
+          Parcours professionel
+        {% else %}
+          Professional background
+        {% endif %}
+      </h1>
+      <hr class="dash-line"/>
+      <div class="timeline">
+        <div class="year">
+          <div class="inner">
+            <span>2018</span>
+          </div>
+        </div>
+
+        <ul class="days">
+          <li class="day">
+            <div class="events">
+              <p>
+                Coordonateur de Projet de Construction et d'Equipement des
+                Nouveaux Centres Universitaires (PCENCU)
+                <span>
+                  - Ministère de l'Enseignement Supérieur et de la Recherche
+                  Scientifique.
+                </span>
+              <p/>
+              <div class="date">31/10/2016</div>
+            </div>
+          </li>
+          <li class="day">
+            <div class="events">
+              <p>
+                Conseiller technique chargé des Infrastructures, des
+                Equipements Universitaires, des Financements et de la Gestion
+                des Projets
+                <span>
+                  - Ministère de l'Enseignement Supérieur et de la Recherche
+                  Scientifique.
+                </span>
+              <p/>
+              <div class="date">23/06/2016</div>
+            </div>
+          </li>
+          <li class="day">
+            <div class="events">
+              <p>
+                Coordonateur Master de Recherche Génie des Matériaux et Structures
+                <span>
+                  - Ecole Doctorale des Sciences de l'Ingénieur
+                </span>
+              <p/>
+              <div class="date">19/02/2016</div>
+            </div>
+          </li>
+          <li class="day">
+            <div class="events">
+              <p>
+                Responsable du Laboratoire Pédagogique option Bâtiments et
+                Travaux Publics (BTP) du Département de Génie Civil
+                <span>
+                  - Ecole Polytechnique d'Abomey Calavi (EPAC)
+                </span>
+              <p/>
+              <div class="date">08/12/2014</div>
+            </div>
+          </li>
+          <li class="day">
+            <div class="events">
+              <p>
+                ...........................
+                <span>
+                  - ...................
+                </span>
+              <p/>
+              <div class="date">--/--/----</div>
+            </div>
+          </li>
+
+
+        </ul>
+
+        <div class="year year--end">
+          <div class="inner">
+            <span>1992</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

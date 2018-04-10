@@ -9,7 +9,7 @@ from django.utils import timezone
 # Forms
 from .forms import ContactForm
 # Models
-from .models import Post, StaticText
+from .models import Post, OccupiedPost, Education, AcademyTitle, StaticText
 # Python packages
 from math import ceil
 
@@ -22,8 +22,14 @@ def about(request):
         about = StaticText.objects.get(category = "about_page").french
     else:
         about = StaticText.objects.get(category = "about_page").english
+
+    post_list = OccupiedPost.objects.order_by('-date')
+    edu_list = Education.objects.order_by('-date')
+    aca_list = AcademyTitle.objects.order_by('-date')
+
     return render(request, 'shumpaga_app/index.html',
-        {'about': about})
+            {'about': about, 'post': post_list, 'edu': edu_list,
+                'aca': aca_list})
 
 
 ###############################################################################

@@ -39,11 +39,33 @@ class Post(models.Model):
 
 
 class OccupiedPost(models.Model):
-    description_fr = models.CharField(max_length=300)
-    description_en = models.CharField(max_length=300)
-    institution = models.CharField(max_length=300)
-    abstract = models.CharField(max_length=300)
-    date = models.DateTimeField()
+    institution = models.CharField(max_length=200)
+    description_en = RichTextUploadingField()
+    description_fr = RichTextUploadingField()
+    date = models.DateField()
+
+    def __str__(self):
+        return self.description_fr
+
+
+class AcademyTitle(models.Model):
+    titre_en = models.CharField(max_length=200)
+    titre_fr = models.CharField(max_length=200)
+    institution = models.CharField(max_length=200)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.titre_fr
+
+
+class Education(models.Model):
+    diplome_en = models.CharField(max_length=200)
+    diplome_fr = models.CharField(max_length=200)
+    institution = models.CharField(max_length=200)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.diplome_fr
 
 
 class StaticText(models.Model):

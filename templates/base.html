@@ -40,7 +40,12 @@
       <img class="img-circle" src="{% static "images/me.jpg" %}">
       <div class="small-bio">
         <p class="small-bio-elt">
-          Dr. <span class="small-bio-highlight"> Gbaguidi Aïsse Gérard </span>
+          {% if LANGUAGE_CODE == "fr" %}
+            Prof.
+          {% else %}
+            Prof.
+          {% endif %}
+          <span class="small-bio-highlight"> Gbaguidi Aïsse Gérard </span>
         </p>
         <p class="small-bio-elt">
           {% if LANGUAGE_CODE == "fr" %}
@@ -177,13 +182,39 @@
     <footer id="footer">
       <div class="container-fluid">
         <div class="row">
-          <p class="col-sm-4 footer-elt">
-          <a href="mailto:contact@shumpaga.com">contact@shumpaga.com</a>
-          </p>
-          <p class="col-sm-4 footer-elt">
-          Copyright &copy; 2017, Alexandre Gbaguidi Aïsse<br>
-          </p>
-        </div> <!-- /row of widgets -->
+          <div class="col-md-10 col-md-offset-2">
+            <div class="container-fluid">
+              <div class="row footer-logo-zone">
+                <div class="col-md-2 col-md-offset-3 col-xs-4">
+                  <a href="http://epac.uac.bj/">
+                    <img class="footer-logo"
+                         src="{% static "images/logoepac.png" %}">
+                  </a>
+                </div>
+                <div class="col-md-2 col-xs-4">
+                  <a href="http://www.verechaguine.com/">
+                    <img class="footer-logo"
+                         src="{% static "images/logoesgcvak.jpg" %}">
+                  </a>
+                </div>
+                <div class="col-md-2 col-xs-4">
+                  <a href="http://www.uac.bj/">
+                    <img class="footer-logo"
+                         src="{% static "images/logouac.png" %}">
+                  </a>
+                </div>
+              </div>
+              <div class="row footer-text-zone">
+                <div class="col-xs-8 footer-text-zone-left">
+                  Copyright &copy; 2018, Gérard Gbaguidi Aïsse<br>
+                </div>
+                <div class="col-xs-4 footer-text-zone-right">
+                  Designed by <a href="www.shumpaga.com">Shumpaga</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
 

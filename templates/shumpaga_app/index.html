@@ -18,11 +18,77 @@
           {% endif %}
         </h1>
         <hr/>
-        {{ about | safe }}
+        <p>
+          {{ about | safe }}
+        </p>
       </div>
     </div>
   </div>
+
   <div class="row section2">
+    <div class="col-sm-6">
+      <h1>
+        {% if LANGUAGE_CODE == "fr" %}
+          Grades universitaires
+        {% else %}
+          Academic Positions
+        {% endif %}
+      </h1>
+      <hr/>
+      <ul class="ordered-list">
+        {% for a in aca %}
+        <li class="ordered-list-elt">
+          <label class="ordered-list-icon ordered-list-icon-dark"></label>
+          <div class="ordered-list-content">
+            <p class="ordered-list-date">
+              {{ a.date }}
+            </p>
+            <h3>
+              {% if LANGUAGE_CODE == "fr" %}
+                {{ a.titre_fr }}
+              {% else %}
+                {{ a.titre_en }}
+              {% endif %}
+            </h3>
+            <p>
+              {{ a.institution }}
+            </p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <h1>
+        Education
+      </h1>
+      <hr/>
+      <ul class="ordered-list">
+        {% for e in edu %}
+        <li class="ordered-list-elt">
+          <label class="ordered-list-icon ordered-list-icon-light"></label>
+          <div class="ordered-list-content">
+            <p class="ordered-list-date">
+              {{ e.date }}
+            </p>
+            <h3>
+              {% if LANGUAGE_CODE == "fr" %}
+                {{ e.diplome_fr }}
+              {% else %}
+                {{ e.diplome_en }}
+              {% endif %}
+            </h3>
+            <p>
+              {{ e.institution }}
+            </p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="row section1">
     <div class="col-sm-12">
       <h1>
         {% if LANGUAGE_CODE == "fr" %}
@@ -33,35 +99,33 @@
       </h1>
       <hr/>
       <ul class="timeline">
-        <li>
-          <div class="direction-r">
+        {% for p in post %}
+          <li>
+            <div
+              class="{% if forloop.counter|divisibleby:2 %}
+                      direction-l
+                     {% else %}
+                      direction-r
+                     {% endif %}">
             <div class="flag-wrapper">
-              <span class="flag">Freelancer</span>
-              <span class="time-wrapper"><span class="time">2013 - present</span></span>
+              <span class="flag">
+                {{ p.institution }}
+              </span>
+              <span class="time-wrapper">
+                <span class="time">
+                  {{ p.date }}
+                </span>
+              </span>
             </div>
             <div class="desc">
-              My current employment. Way better than the position before!</div>
-          </div>
-        </li>
-        <li>
-          <div class="direction-l">
-            <div class="flag-wrapper">
-              <span class="flag">Apple Inc.</span>
-              <span class="time-wrapper"><span class="time">2011 - 2013</span></span>
+              {% if LANGUAGE_CODE == "fr" %}
+                {{ p.description_fr | safe }}
+              {% else %}
+                {{ p.description_en | safe }}
+              {% endif %}
             </div>
-            <div class="desc">
-              My first employer. All the stuff I've learned and projects I've been working on.</div>
-          </div>
-        </li>
-        <li>
-          <div class="direction-r">
-            <div class="flag-wrapper">
-              <span class="flag">Harvard University</span>
-              <span class="time-wrapper"><span class="time">2008 - 2011</span></span>
-            </div>
-            <div class="desc">A description of all the lectures and courses I have taken and my final degree?</div>
-          </div>
-        </li>
+          </li>
+        {% endfor %}
       </ul>
     </div>
   </div>

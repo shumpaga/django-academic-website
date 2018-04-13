@@ -31,6 +31,12 @@ def about(request):
             {'about': about, 'post': post_list, 'edu': edu_list,
                 'aca': aca_list})
 
+            ###############################################################################
+#                            Publications
+###############################################################################
+def publications(request):
+    return render(request, 'shumpaga_app/publications.html')
+
 
 ###############################################################################
 #                           Article categories

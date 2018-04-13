@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.about, name='about'),
+    url(r'^publications$', views.publications, name='publications'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]

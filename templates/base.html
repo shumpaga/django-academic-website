@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- Custom styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'bib-publication-list/bib-publication-list.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'bib-publication-list/build/bib-list-min.js' %}"></script>
     <link rel="shortcut icon" href="{% static 'images/gt_favicon.png' %}">
     <!--[if lt IE 9]> <script src="{% static 'js/html5shiv.js' %}"></script> <![endif]-->
   </head>
@@ -85,8 +88,10 @@
                   {% endif %}
                 </a>
               </li>
-              <li>
-                <a href="{% url 'about' %}">
+              <li {% if request.resolver_match.url_name == "publications" %}
+                class="active"
+                {% endif %}>
+                <a href="{% url 'publications' %}">
                   {% if LANGUAGE_CODE == "fr" %}
                   Recherches Et Publications
                   {% else %}
@@ -206,7 +211,7 @@
               </div>
               <div class="row footer-text-zone">
                 <div class="col-xs-8 footer-text-zone-left">
-                  Copyright &copy; 2018, Gérard Gbaguidi Aïsse<br>
+                  Copyright &copy; 2018, Gbaguidi Aïsse Gérard<br>
                 </div>
                 <div class="col-xs-4 footer-text-zone-right">
                   Designed by <a href="www.shumpaga.com">Shumpaga</a>

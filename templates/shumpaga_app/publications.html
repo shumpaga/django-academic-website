@@ -5,12 +5,19 @@
 <main id="main">
 <div class="container-fluid">
   <div class="row section1">
+    <h1 class="publication-title">
+      {% if LANGUAGE_CODE == "fr" %}
+        Liste de publications
+      {% else %}
+        List of publications
+      {% endif %}
+    </h1>
     <noscript>
       <style>
       #bibtex { display: block; }
       </style>
     </noscript>
-    <table id="pubTable" class="display"></table>
+    <table id="pubTable" class="display table-responsive"></table>
     <pre id="bibtex">
 @inproceedings{CRPITV160P147-154,
 Author = {Erkki Kaila and Teemu Rajala and Mikko-Jussi Laakso and Rolf Linden and Einari Kurvinen and Ville Karavirta and Tapio Salakoski},
@@ -754,10 +761,11 @@ keywords = {Xaal}
  pages = {52--56},
  month = {October},
  url = {http://www.cs.hut.fi/Research/SVG/publications/koli02P08.pdf}
-}</pre>
-<script type="text/javascript">
-  bibtexify("#bibtex", "pubTable");
-</script>
+}
+    </pre>
+    <script type="text/javascript">
+      bibtexify("#bibtex", "pubTable");
+    </script>
   </div>
 </div>
 </main>

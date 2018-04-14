@@ -152,7 +152,7 @@
       <div class="row sidebar-element">
         <form name="ui" action="{% url 'set_language' %}" method="post">
           {% csrf_token %}
-          <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+          <input name="next" type="hidden" value="{{ request.get_full_path }}" />
           {% if LANGUAGE_CODE == "fr" %}
           <input name="language" type="hidden" value="en" />
           <input type="submit"

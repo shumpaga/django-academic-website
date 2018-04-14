@@ -100,5 +100,4 @@ secret_key.txt
 backup_loc.txt
 academic/settings.py
 academic-virtualenv/
-static/
 backup/

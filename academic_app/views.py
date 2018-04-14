@@ -26,16 +26,19 @@ def about(request):
     post_list = OccupiedPost.objects.order_by('-date')
     edu_list = Education.objects.order_by('-date')
     aca_list = AcademyTitle.objects.order_by('-date')
+    language = request.LANGUAGE_CODE
 
     return render(request, 'shumpaga_app/index.html',
             {'about': about, 'post': post_list, 'edu': edu_list,
-                'aca': aca_list})
+                'aca': aca_list, 'language': language})
 
             ###############################################################################
 #                            Publications
 ###############################################################################
 def publications(request):
-    return render(request, 'shumpaga_app/publications.html')
+    language = request.LANGUAGE_CODE
+    return render(request, 'shumpaga_app/publications.html',
+            {'language': language})
 
 
 ###############################################################################

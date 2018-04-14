@@ -325,22 +325,16 @@ a:hover {
   position: absolute;
   left: 50%;
   top: 0;
-  content: ' ';
   display: block;
-  width: 6px;
   height: 100%;
   margin-left: -3px;
-  background: rgb(80,80,80);
-  background: -moz-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)));
-  background: -webkit-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  background: -o-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  background: -ms-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
-  background: linear-gradient(to bottom, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
   z-index: 5;
+  background-color: #000000;
+  content: '';
+  width: 2px;
+  height: 100%;
 }
 .timeline li {
-  padding: 1em 0;
 }
 .timeline li:after {
   content: "";
@@ -388,16 +382,19 @@ a:hover {
 .direction-r .flag:before {
   position: absolute;
   top: 50%;
-  right: -35px;
+  right: -32px;
   content: ' ';
   display: block;
-  width: 20px;
-  height: 20px;
   margin-top: -10px;
-  background: #fff;
   border-radius: 10px;
-  border: 4px solid rgb(255,80,80);
   z-index: 10;
+  background-color: #000000;
+  border-radius: 25px;
+  display: block;
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  box-shadow: 0 0 0 2px hsl(0, 0%, 80%), 0 0 0 10px hsl(0, 0%, 90%);
 }
 .direction-r .flag:before {
   left: -40px;
@@ -485,14 +482,16 @@ a:hover {
     top: -30px;
     left: 50%;
     content: ' ';
-    display: block;
-    width: 15px;
-    height: 15px;
-    margin-left: -8px;
+    margin-left: -11px;
     background: #fff;
-    border-radius: 10px;
-    border: 4px solid rgb(255,80,80);
     z-index: 10;
+    background-color: #000000;
+    border-radius: 25px;
+    display: block;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    box-shadow: 0 0 0 2px hsl(0, 0%, 80%), 0 0 0 10px hsl(0, 0%, 90%);
   }
   .direction-l .flag:after,
   .direction-r .flag:after {
@@ -581,7 +580,7 @@ a:hover {
 }
 .ordered-list-icon {
   background-color: #000000;
-  outline: 4px solid #C09F80;
+  border-radius: 25px;
   display: block;
   margin: 0.5em 0.5em 0.5em -0.5em;
   position: absolute;
@@ -589,15 +588,13 @@ a:hover {
   left: -0.5em;
   width: 1em;
   height: 1em;
+  box-shadow: 0 0 0 2px hsl(0, 0%, 100%), 0 0 0 10px hsl(0, 0%, 90%);
 }
-/*
-.ordered-list-icon-dark {
-  outline: 10px solid #E1E1E1;
+@media screen and (max-width: 660px) {
+  .ordered-list-icon {
+    left: -10px;
+  }
 }
-.ordered-list-icon-light {
-  outline: 10px solid #F2F2F2;
-}
-*/
 .ordered-list-date {
   color: #FFFFFF;
   font-size: 0.75em;

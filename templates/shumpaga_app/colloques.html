@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Colloques/Conferences{% endblock %}
+{% block content %}
+<main id="main">
+<div class="container-fluid">
+  <div class="row section1">
+    <div class="col-sm-10 col-sm-offset-1">
+      <h1>
+        {% if LANGUAGE_CODE == "fr" %}
+          Colloques / Conférences / Ateliers
+        {% else %}
+          Conferences / Symposiums / Workshops
+        {% endif %}
+      </h1>
+      <hr/>
+      <ul class="ordered-list">
+        {% for c in coll %}
+        <li class="ordered-list-elt">
+          <label class="ordered-list-icon ordered-list-icon-dark"></label>
+          <div class="ordered-list-content">
+            <p class="ordered-list-date">
+              {% if c.date_debut.month == c.date_fin.month %}
+                Du {{ c.date_debut.day }} au {{ c.date_fin }}
+              {% else %}
+                Du {{ c.date_debut.day }}{{ c.date_debut.month }} au {{ c.date_fin }}
+              {% endif %}
+            </p>
+            <h3>
+              {% if LANGUAGE_CODE == "fr" %}
+                {{ c.description_fr | safe }}
+              {% else %}
+                {{ c.description_en | safe }}
+              {% endif %}
+            </h3>
+            <p>
+              {{ c.lieu }}
+            </p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>	<!-- /container -->
+</main>
+{% endblock content %}

@@ -99,8 +99,10 @@
                   {% endif %}
                 </a>
               </li>
-              <li>
-                <a href="{% url 'about' %}">
+              <li {% if request.resolver_match.url_name == "colloques" %}
+                class="active"
+                {% endif %}>
+                <a href="{% url 'colloques' %}">
                   {% if LANGUAGE_CODE == "fr" %}
                   Colloques-Conférences
                   {% else %}

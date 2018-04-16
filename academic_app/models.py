@@ -44,6 +44,7 @@ class OccupiedPost(models.Model):
     description_fr = RichTextUploadingField()
     date = models.DateField()
 
+
     def __str__(self):
         return self.description_fr
 
@@ -66,6 +67,17 @@ class Education(models.Model):
 
     def __str__(self):
         return self.diplome_fr
+
+
+class Colloque(models.Model):
+    date_debut = models.DateField()
+    date_fin = models.DateField()
+    lieu = models.CharField(max_length=200)
+    description_en = RichTextUploadingField()
+    description_fr = RichTextUploadingField()
+
+    def __str__(self):
+        return self.description_fr
 
 
 class StaticText(models.Model):

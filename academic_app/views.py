@@ -9,7 +9,7 @@ from django.utils import timezone
 # Forms
 from .forms import ContactForm
 # Models
-from .models import Post, OccupiedPost, Education, AcademyTitle, StaticText
+from .models import Post, OccupiedPost, Education, Colloque, AcademyTitle, StaticText
 # Python packages
 from math import ceil
 
@@ -43,6 +43,14 @@ def publications(request):
     return render(request, 'shumpaga_app/publications.html',
             { 'publication': publication })
 
+
+###############################################################################
+#                           Colloques-conférences
+###############################################################################
+def colloques(request):
+    coll_list = Colloque.objects.order_by('-date_debut')
+    return render(request, 'shumpaga_app/colloques.html',
+            { 'coll': coll_list })
 
 ###############################################################################
 #                           Article categories

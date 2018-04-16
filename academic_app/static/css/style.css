@@ -575,6 +575,7 @@ a:hover {
 }
 .ordered-list-content p {
   font-size: 0.9em;
+  margin-bottom: 10px;
 }
 .ordered-list-elt {
 }

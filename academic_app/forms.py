@@ -7,9 +7,10 @@ class PostForm(forms.ModelForm):
         fields = ('title_en', 'title_fr', 'text_en', 'text_fr')
 
 class ContactForm(forms.Form):
-    contact_name = forms.CharField(help_text="", label="Your name", required=True)
-    contact_email = forms.EmailField(help_text="", label="Your email", required=True)
+    contact_name = forms.CharField(help_text="", label="Nom", required=True)
+    contact_email = forms.EmailField(help_text="",
+            label="Email", required=True)
     subject = forms.CharField(help_text="",
-            label="What do you want to talk about ?", required=True)
-    content = forms.CharField(help_text="", label="Tell me everything...",
+            label="Sujet", required=True)
+    content = forms.CharField(help_text="", label="Détails",
             required=True, widget=forms.Textarea)

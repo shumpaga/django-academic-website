@@ -28,7 +28,7 @@ def about(request):
     aca_list = AcademyTitle.objects.order_by('-date')
     language = request.LANGUAGE_CODE
 
-    return render(request, 'shumpaga_app/index.html',
+    return render(request, 'academic_app/index.html',
             {'about': about, 'post': post_list, 'edu': edu_list,
                 'aca': aca_list, 'language': language})
 
@@ -40,7 +40,7 @@ def publications(request):
         publication = StaticText.objects.get(category = "publication_page").french
     else:
         publication = StaticText.objects.get(category = "publication_page").english
-    return render(request, 'shumpaga_app/publications.html',
+    return render(request, 'academic_app/publications.html',
             { 'publication': publication })
 
 
@@ -49,7 +49,7 @@ def publications(request):
 ###############################################################################
 def colloques(request):
     coll_list = Colloque.objects.order_by('-date_debut')
-    return render(request, 'shumpaga_app/colloques.html',
+    return render(request, 'academic_app/colloques.html',
             { 'coll': coll_list })
 
 ###############################################################################
@@ -79,7 +79,7 @@ def work(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'shumpaga_app/category.html',
+    return render(request, 'academic_app/category.html',
             {'posts': posts, 'descr': descr,
                 'cat': 'work', 'empty': empty, 'language': language})
 
@@ -107,4 +107,4 @@ def contact(request):
                     fail_silently=False)
             messages.success(request, 'Your email has been successfully sent')
             return redirect('contact')
-    return render(request, 'shumpaga_app/contact.html', {'form': form_class,})
+    return render(request, 'academic_app/contact.html', {'form': form_class,})

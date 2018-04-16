@@ -71,6 +71,7 @@ class Education(models.Model):
 class StaticText(models.Model):
     TAG_CHOICES = (
         ('about_page', 'about_page'),
+        ('publication_page', 'publication_page')
     )
     category = models.CharField(max_length=16, choices=TAG_CHOICES, default='about_page')
     english = RichTextField()

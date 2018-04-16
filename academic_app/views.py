@@ -36,9 +36,12 @@ def about(request):
 #                            Publications
 ###############################################################################
 def publications(request):
-    language = request.LANGUAGE_CODE
+    if request.LANGUAGE_CODE == 'fr':
+        publication = StaticText.objects.get(category = "publication_page").french
+    else:
+        publication = StaticText.objects.get(category = "publication_page").english
     return render(request, 'shumpaga_app/publications.html',
-            {'language': language})
+            { 'publication': publication })
 
 
 ###############################################################################

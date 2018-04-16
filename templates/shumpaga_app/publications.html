@@ -5,13 +5,16 @@
 <main id="main">
 <div class="container-fluid">
   <div class="row section1">
-    <h1 class="publication-title">
+    <h1 class="">
       {% if LANGUAGE_CODE == "fr" %}
         Liste de publications
       {% else %}
         List of publications
       {% endif %}
     </h1>
+    <div class="pub-descr">
+      {{ publication | safe }}
+    </div>
     <noscript>
       <style>
       #bibtex { display: block; }

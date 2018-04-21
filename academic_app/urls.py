@@ -5,9 +5,10 @@ from django.views.static import serve
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.about, name='about'),
-    url(r'^publications$', views.publications, name='publications'),
+    url(r'^$', views.publications, name='publications'),
+    url(r'^about$', views.about, name='about'),
     url(r'^colloques$', views.colloques, name='colloques'),
+    url(r'^expertises$', views.expertises, name='expertises'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]

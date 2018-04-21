@@ -9,10 +9,9 @@ from django.utils import timezone
 # Forms
 from .forms import ContactForm
 # Models
-from .models import Post, OccupiedPost, Education, Colloque, AcademyTitle, StaticText
+from .models import Post, OccupiedPost, Education, Colloque, Expertise, AcademyTitle, StaticText
 # Python packages
 from math import ceil
-
 
 ###############################################################################
 #                                 About
@@ -51,6 +50,15 @@ def colloques(request):
     coll_list = Colloque.objects.order_by('-date_debut')
     return render(request, 'academic_app/colloques.html',
             { 'coll': coll_list })
+
+
+###############################################################################
+#                              Expertises
+###############################################################################
+def expertises(request):
+    exp_list = Expertise.objects.order_by('-year')
+    return render(request, 'academic_app/expertises.html',
+            { 'exp': exp_list , 'count' : len(exp_list)})
 
 ###############################################################################
 #                           Article categories

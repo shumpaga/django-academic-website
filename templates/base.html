@@ -110,21 +110,14 @@
                   {% endif %}
                 </a>
               </li>
-              <li>
-                <a href="{% url 'about' %}">
+              <li {% if request.resolver_match.url_name == "expertises" %}
+                class="active"
+                {% endif %}>
+                <a href="{% url 'expertises' %}">
                   {% if LANGUAGE_CODE == "fr" %}
-                  Expertises
+                  Expertises / études techniques
                   {% else %}
-                  Expertises
-                  {% endif %}
-                </a>
-              </li>
-              <li>
-                <a href="{% url 'about' %}">
-                  {% if LANGUAGE_CODE == "fr" %}
-                  Etudes Techniques
-                  {% else %}
-                  Technical Studies
+                  Expertises / technical studies
                   {% endif %}
                 </a>
               </li>

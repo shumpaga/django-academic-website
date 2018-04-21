@@ -9,7 +9,7 @@ from django.utils import timezone
 # Forms
 from .forms import ContactForm
 # Models
-from .models import Post, OccupiedPost, Education, Colloque, Expertise, AcademyTitle, StaticText
+from .models import Post, OccupiedPost, Education, Colloque, Expertise, Enseignement, AcademyTitle, StaticText
 # Python packages
 from math import ceil
 
@@ -48,7 +48,7 @@ def publications(request):
 ###############################################################################
 def colloques(request):
     coll_list = Colloque.objects.order_by('-date_debut')
-    return render(request, 'academic_app/colloques.html',
+    return render(request, 'academic_app/conferences.html',
             { 'coll': coll_list })
 
 
@@ -59,6 +59,20 @@ def expertises(request):
     exp_list = Expertise.objects.order_by('-year')
     return render(request, 'academic_app/expertises.html',
             { 'exp': exp_list , 'count' : len(exp_list)})
+
+
+###############################################################################
+#                             Enseignements
+###############################################################################
+def enseignements(request):
+    ens_list = Enseignement.objects.order_by('-date_debut')
+    if request.LANGUAGE_CODE == 'fr':
+        descr = StaticText.objects.get(category = "enseignement_page").french
+    else:
+        descr = StaticText.objects.get(category = "enseignement_page").english
+    return render(request, 'academic_app/teaching.html',
+            { 'ens': ens_list, 'descr': descr })
+
 
 ###############################################################################
 #                           Article categories

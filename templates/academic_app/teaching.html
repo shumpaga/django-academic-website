@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Enseignements/Missions{% endblock %}
+{% block content %}
+<main id="main">
+<div class="container-fluid">
+  <div class="row section1">
+    <div class="col-sm-12">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            <h1>
+              {% if LANGUAGE_CODE == "fr" %}
+                Enseignements - Missions
+              {% else %}
+                Teaching - Missions
+              {% endif %}
+            </h1>
+            <hr/>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-descr">
+        {{ descr | safe }}
+      </div>
+
+      <ul class="ordered-list">
+        {% for e in ens %}
+        <li class="ordered-list-elt">
+          <label class="ordered-list-icon ordered-list-icon-dark"></label>
+          <div class="ordered-list-content">
+            <p class="ordered-list-date">
+              {% if LANGUAGE_CODE == "fr" %}
+                {% if e.date_fin %}
+                  Du {{ e.date_debut.month }}/{{ e.date_debut.year }}
+                  au {{ e.date_fin.month }}/{{ e.date_fin.year }}
+                {% else %}
+                  Du {{ e.date_debut.month }}/{{ e.date_debut.year }}
+                  à ce jour
+                {% endif %}
+              {% else %}
+                {% if e.date_fin %}
+                  From {{ e.date_debut.month }}/{{ e.date_debut.year }}
+                  to {{ e.date_fin.month }}/{{ e.date_fin.year }}
+                {% else %}
+                  From {{ e.date_debut.month }}/{{ e.date_debut.year }}
+                  to this day
+                {% endif %}
+              {% endif %}
+            </p>
+            <h3>
+              {{ e.description | safe }}
+            </h3>
+            <p>
+              {{ e.lieu }}
+            </p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>	<!-- /container -->
+</main>
+{% endblock content %}

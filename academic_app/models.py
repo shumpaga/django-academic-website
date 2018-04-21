@@ -46,7 +46,6 @@ class OccupiedPost(models.Model):
     description_fr = RichTextUploadingField()
     date = models.DateField()
 
-
     def __str__(self):
         return self.description_fr
 
@@ -92,7 +91,7 @@ class Expertise(models.Model):
     description_fr = RichTextUploadingField()
     description_en = RichTextUploadingField()
 
-    def save(self):
+    def save(self, *args, **kwargs):
         exp_list = Expertise.objects.order_by('-year')
 
         # Fill years and count with what is needed
@@ -146,12 +145,23 @@ class Expertise(models.Model):
         return self.description_fr
 
 
+class Enseignement(models.Model):
+    date_debut = models.DateField()
+    date_fin = models.DateField(blank=True, null=True)
+    lieu = models.CharField(max_length=200)
+    description = RichTextUploadingField()
+
+    def __str__(self):
+        return self.description
+
+
 class StaticText(models.Model):
     TAG_CHOICES = (
         ('about_page', 'about_page'),
-        ('publication_page', 'publication_page')
+        ('publication_page', 'publication_page'),
+        ('enseignement_page', 'enseignement_page')
     )
-    category = models.CharField(max_length=16, choices=TAG_CHOICES, default='about_page')
+    category = models.CharField(max_length=32, choices=TAG_CHOICES, default='about_page')
     english = RichTextField()
     french = RichTextField()
 

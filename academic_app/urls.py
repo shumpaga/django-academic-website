@@ -7,8 +7,9 @@ from . import views
 urlpatterns = [
     url(r'^$', views.publications, name='publications'),
     url(r'^about$', views.about, name='about'),
-    url(r'^colloques$', views.colloques, name='colloques'),
-    url(r'^expertises$', views.expertises, name='expertises'),
+    url(r'^conference$', views.colloques, name='conferences'),
+    url(r'^expertise$', views.expertises, name='expertises'),
+    url(r'^teaching$', views.enseignements, name='teaching'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]

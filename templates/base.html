@@ -99,10 +99,10 @@
                   {% endif %}
                 </a>
               </li>
-              <li {% if request.resolver_match.url_name == "colloques" %}
+              <li {% if request.resolver_match.url_name == "conferences" %}
                 class="active"
                 {% endif %}>
-                <a href="{% url 'colloques' %}">
+                <a href="{% url 'conferences' %}">
                   {% if LANGUAGE_CODE == "fr" %}
                   Colloques-Conférences
                   {% else %}
@@ -121,8 +121,10 @@
                   {% endif %}
                 </a>
               </li>
-              <li>
-                <a href="{% url 'about' %}">
+              <li {% if request.resolver_match.url_name == "teaching" %}
+                class="active"
+                {% endif %}>
+                <a href="{% url 'teaching' %}">
                   {% if LANGUAGE_CODE == "fr" %}
                   Enseignements-Missions
                   {% else %}

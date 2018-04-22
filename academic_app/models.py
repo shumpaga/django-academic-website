@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.html import strip_tags
+from django.utils.encoding import smart_text
 from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.validators import MinValueValidator, MaxValueValidator
 import datetime
 
@@ -23,8 +24,8 @@ class Post(models.Model):
     title_fr = models.CharField(max_length=200, blank=True)
     youtube_url = models.CharField(max_length=200, default='', blank=True)
     display_it = models.BooleanField(default=False)
-    text_en = RichTextUploadingField()
-    text_fr = RichTextUploadingField(blank=True)
+    text_en = RichTextField()
+    text_fr = RichTextField(blank=True)
     abstract = models.CharField(max_length=300)
     abstract_fr = models.CharField(max_length=300, blank=True)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -42,8 +43,8 @@ class Post(models.Model):
 
 class OccupiedPost(models.Model):
     institution = models.CharField(max_length=200)
-    description_en = RichTextUploadingField()
-    description_fr = RichTextUploadingField()
+    description_en = RichTextField()
+    description_fr = RichTextField()
     date = models.DateField()
 
     def __str__(self):
@@ -74,8 +75,8 @@ class Colloque(models.Model):
     date_debut = models.DateField()
     date_fin = models.DateField()
     lieu = models.CharField(max_length=200)
-    description_en = RichTextUploadingField()
-    description_fr = RichTextUploadingField()
+    description_en = RichTextField()
+    description_fr = RichTextField()
 
     def __str__(self):
         return self.description_fr
@@ -88,8 +89,8 @@ class Expertise(models.Model):
                 MinValueValidator(1900),
                 MaxValueValidator(datetime.datetime.now().year)],
             help_text="Utilisez le format suivant: YYYY")
-    description_fr = RichTextUploadingField()
-    description_en = RichTextUploadingField()
+    description_fr = RichTextField()
+    description_en = RichTextField()
 
     def save(self, *args, **kwargs):
         exp_list = Expertise.objects.order_by('-year')
@@ -149,10 +150,12 @@ class Enseignement(models.Model):
     date_debut = models.DateField()
     date_fin = models.DateField(blank=True, null=True)
     lieu = models.CharField(max_length=200)
-    description = RichTextUploadingField()
+    description = RichTextField()
 
     def __str__(self):
-        return self.description
+        a = strip_tags(self.description)
+        print(a)
+        return a
 
 
 class StaticText(models.Model):

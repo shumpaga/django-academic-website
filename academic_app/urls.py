@@ -5,7 +5,7 @@ from django.views.static import serve
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.publications, name='publications'),
+    #url(r'^$', views.publications, name='publications'),
     url(r'^about$', views.about, name='about'),
     url(r'^conference$', views.colloques, name='conferences'),
     url(r'^expertise$', views.expertises, name='expertises'),

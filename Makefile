@@ -15,6 +15,7 @@ install:
 	pip install psycopg2
 	pip install image
 	pip install django-threadedcomments
+	pip install matplotlib
 	python manage.py migrate
 
 notify-database:

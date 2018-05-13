@@ -231,8 +231,8 @@ class TheseDoctorale(models.Model):
         Organization = {{{}}},
         Year         = {{{}}},
         URL          = {{{}}},
-    }}""".format(self.auteurs[:4] + ':' + self.titre[:10].replace(' ', ''),
-            self.auteurs,
+    }}""".format(self.auteur[:4] + ':' + self.titre[:10].replace(' ', ''),
+            self.auteur,
             self.titre,
             self.ecole,
             self.departement,
@@ -268,8 +268,8 @@ class TheseMaster(models.Model):
         Organization = {{{}}},
         Year         = {{{}}},
         URL          = {{{}}},
-    }}""".format(self.auteurs[:4] + ':' + self.titre[:10].replace(' ', ''),
-            self.auteurs,
+    }}""".format(self.auteur[:4] + ':' + self.titre[:10].replace(' ', ''),
+            self.auteur,
             self.titre,
             self.ecole,
             self.departement,
@@ -282,7 +282,7 @@ class TheseMaster(models.Model):
 
 
 class AutrePublication(models.Model):
-    auteur = models.CharField(max_length=300,
+    auteurs = models.CharField(max_length=300,
             help_text="Suivre le format suivant:"
             " Prenom1 Nom1 and Prénom2 Nom2 and ...")
     titre = models.CharField(max_length=300,

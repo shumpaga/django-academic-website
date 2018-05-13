@@ -101,3 +101,5 @@ backup_loc.txt
 academic/settings.py
 academic-virtualenv/
 backup/
+academic/settings.py
+static/

@@ -1,0 +1,209 @@
+#pubTable_filter input {
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  width: 130px;
+  height: 30px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  color: #ffffff;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#pubTable_filter input[type=text]:focus {
+  width: 80%;
+}
+#pubTable_filter {
+  color: #565656;
+  font-style: normal;
+  font-size: 12px;
+  font-weight:400;
+  line-height: 1.5em;
+  font-style: italic;
+  letter-spacing: 1.2px;
+  line-height: 1.5;
+  padding: 5px;
+  margin: auto 15px;
+}
+.pub-descr:first-letter {
+  text-transform: uppercase;
+}
+.pub-descr {
+  color: #424242;
+  font-family: Georgia, Garamond, Times, serif;
+  letter-spacing:0.1em;
+  text-align:center;
+  margin: 40px auto;
+  text-transform: lowercase;
+  font-size: 14pt;
+  font-variant: small-caps;
+}
+span.undefined {
+  color:red;
+}
+.bibtable {
+  width:100%;
+  margin: 0 auto;
+  clear: both;
+}
+.bibchart {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 30px;
+}
+.clear {
+  clear:both;
+}
+.year {
+  position: relative;
+  border-bottom: 1px solid black;
+  display: inline-block;
+}
+.yearlabel {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  font-size: 1.6vw;
+}
+.pub {
+  border: 1px solid white;
+  background-color: #eee;
+}
+.inproceedings {
+  background-color: #ccf;
+}
+.article {
+  background-color: #beb;
+}
+.inbook {
+  background-color: #eaa;
+}
+.phdthesis {
+  background-color: #999;
+}
+.unpublished {
+  background-color: #eae;
+}
+.mastersthesis {
+  background-color: #eea;
+}
+.techreport {
+  background-color: #b77;
+}
+.proceedings {
+  background-color: #9494ff;
+}
+.book {
+  background-color: #ed7878;
+}
+.legend .pub {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin: 0 5px 0 15px;
+}
+.legend {
+  margin-bottom: 24px;
+  text-align: center;
+  width: 100%;
+}
+table.display {
+  overflow-x:auto;
+}
+table.display thead th {
+  padding: 3px 18px 3px 10px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  font-weight:
+  bold; cursor:
+  pointer;
+  cursor: hand;
+}
+table.display tfoot th {
+  padding: 3px 10px;
+  border-top: 1px solid black;
+  font-weight: bold;
+}
+table.display td {
+  padding: 3px 10px;
+  font-size: 13px;
+}
+table.display td.center {
+  text-align: center;
+}
+table.display {
+  margin-top: 24px;
+}
+.sorting_asc {
+  background: url('lib/images/sort_asc.png') no-repeat center right;
+}
+.sorting_desc {
+  background: url('lib/images/sort_desc.png') no-repeat center right;
+}
+.sorting {
+  background: url('lib/images/sort_both.png') no-repeat center right;
+}
+.sorting_asc_disabled {
+  background: url('lib/images/sort_asc_disabled.png') no-repeat center right;
+}
+.sorting_desc_disabled {
+  background: url('lib/images/sort_desc_disabled.png') no-repeat center right;
+}
+tr.odd {
+  background-color: #eee;
+}
+tr.even {
+  background-color: white;
+}
+div.hidden {
+  display: none;
+}
+div.bibinfo {
+  width: 80%;
+  position: fixed;
+  top: 100px;
+  left: 10%;
+  background-color: #bbb;
+  border: 3px solid #fff;
+  padding: 10px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  -o-border-radius:10px;
+  border-radius:10px;
+  z-index: 50;
+}
+#shutter {
+  background-color: #555;
+  opacity: 0.7;
+  width:100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: 20;
+}
+a.bibclose {
+  background-color: #BBBBBB;
+  border: 3px solid #FFFFFF;
+  color: black;
+  float: left;
+  font-size: 20px;
+  height: 20px;
+  left: -25px;
+  line-height: 20px;
+  padding: 3px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  top: -25px;
+  width: 20px;
+  -moz-border-radius:15px;
+  -webkit-border-radius:15px;
+  -o-border-radius:15px;
+  border-radius:15px;
+}
+div.bibinfo pre {
+  clear:both;
+}

@@ -132,17 +132,6 @@
                   {% endif %}
                 </a>
               </li>
-              <li {% if request.resolver_match.url_name == "contact" %}
-                class="active"
-                {% endif %}>
-                <a href="{% url 'contact' %}">
-                  {% if LANGUAGE_CODE == "fr" %}
-                  Contact
-                  {% else %}
-                  Contact
-                  {% endif %}
-                </a>
-              </li>
             </ul>
           </div>
         </nav>

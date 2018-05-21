@@ -6,40 +6,6 @@ from ckeditor.fields import RichTextField
 from django.core.validators import MinValueValidator, MaxValueValidator
 import datetime
 
-class Post(models.Model):
-    WORK = 'Work'
-    MUSIC = 'Music'
-    THOUGHTS = 'Thoughts'
-    TRIPS = 'Trips'
-    TAG_CHOICES = (
-        (WORK, 'Work'),
-        (MUSIC, 'Music'),
-        (THOUGHTS, 'Thoughts'),
-        (TRIPS, 'Trips'),
-    )
-
-    author = models.ForeignKey('auth.User')
-    category = models.CharField(max_length=8, choices=TAG_CHOICES, default=WORK)
-    title_en = models.CharField(max_length=200)
-    title_fr = models.CharField(max_length=200, blank=True)
-    youtube_url = models.CharField(max_length=200, default='', blank=True)
-    display_it = models.BooleanField(default=False)
-    text_en = RichTextField()
-    text_fr = RichTextField(blank=True)
-    abstract = models.CharField(max_length=300)
-    abstract_fr = models.CharField(max_length=300, blank=True)
-    published_date = models.DateTimeField(blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-
-    def approved_comments(self):
-        return self.comments.filter(approved_comment=True)
-
-    def __str__(self):
-        return self.title_en
-
 
 class OccupiedPost(models.Model):
     institution = models.CharField(max_length=200)
@@ -126,13 +92,13 @@ class ExpertiseStatistique(models.Model):
         # Fr
         plt.xlabel("Années", fontsize=16)
         plt.ylabel("Nombre d'expertises ou études techniques", fontsize=16)
-        plt.bar(years, count, 2 / (max(years) - min(years)), color="#76323F")
+        plt.bar(years, count, 3 / (max(years) - min(years)), color="#76323F")
         plt.savefig(path + 'expFR.png', bbox_inches="tight");
 
         # En
         plt.xlabel("Years", fontsize=16)
         plt.ylabel("Expertises or technical studies count", fontsize=16)
-        plt.bar(years, count, 2 / (max(years) - min(years)), color="#76323F")
+        plt.bar(years, count, 3 / (max(years) - min(years)), color="#76323F")
         plt.savefig(path + 'expEN.png', bbox_inches="tight");
         plt.close()
 

@@ -7,9 +7,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 # Forms
-from .forms import ContactForm
 # Models
-from .models import Post, OccupiedPost, Education, Colloque, Expertise, ExpertiseStatistique, Enseignement, AcademyTitle, StaticText
+from .models import OccupiedPost, Education, Colloque, Expertise, ExpertiseStatistique, Enseignement, AcademyTitle, StaticText
 # Python packages
 from math import ceil
 
@@ -78,61 +77,3 @@ def enseignements(request):
         descr = StaticText.objects.get(category = "enseignement_page").english
     return render(request, 'academic_app/teaching.html',
             { 'ens': ens_list, 'descr': descr })
-
-
-###############################################################################
-#                           Article categories
-###############################################################################
-NB_ART_PAGE = 3
-
-def work(request):
-    if request.LANGUAGE_CODE == 'fr':
-        descr = StaticText.objects.get(category = "work_cat").french
-        empty = StaticText.objects.get(category = "empty_cat").french
-    else:
-        descr = StaticText.objects.get(category = "work_cat").english
-        empty = StaticText.objects.get(category = "empty_cat").english
-
-    post_list = Post.objects.filter(category="Work")\
-            .filter(published_date__lte=timezone.now())\
-            .order_by('-published_date')
-    page = request.GET.get('page', 1)
-    paginator = Paginator(post_list, NB_ART_PAGE)
-    language = request.LANGUAGE_CODE
-
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
-
-    return render(request, 'academic_app/category.html',
-            {'posts': posts, 'descr': descr,
-                'cat': 'work', 'empty': empty, 'language': language})
-
-
-###############################################################################
-#                               Contact
-###############################################################################
-def contact(request):
-    form_class = ContactForm
-    if request.method == 'POST':
-        form = form_class(data=request.POST)
-        if form.is_valid():
-
-            subject = request.POST.get('subject', '')
-            from_email = request.POST.get('contact_email', '')
-            to_email = [settings.EMAIL_HOST_USER]
-
-            contact_name = request.POST.get('contact_name', '')
-            content = request.POST.get('content', '')
-            message = '{} sent you this message:\n{}'\
-                    .format(contact_name, content)
-
-            send_mail(subject=subject, from_email=from_email,
-                    recipient_list=to_email, message=message,
-                    fail_silently=False)
-            messages.success(request, 'Your email has been successfully sent')
-            return redirect('contact')
-    return render(request, 'academic_app/contact.html', {'form': form_class,})

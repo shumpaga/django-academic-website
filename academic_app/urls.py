@@ -10,7 +10,6 @@ urlpatterns = [
     url(r'^conference$', views.colloques, name='conferences'),
     url(r'^expertise$', views.expertises, name='expertises'),
     url(r'^teaching$', views.enseignements, name='teaching'),
-    url(r'^contact$', views.contact, name='contact'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

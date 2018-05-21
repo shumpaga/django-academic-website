@@ -92,7 +92,7 @@ class ExpertiseStatistique(models.Model):
             "effectuées l'année considérée.")
 
     def __str__(self):
-        return self.year
+        return str(self.year)
 
     def save(self, *args, **kwargs):
         exp_list = ExpertiseStatistique.objects.order_by('-year')

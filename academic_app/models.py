@@ -103,7 +103,7 @@ class ExpertiseStatistique(models.Model):
         for e in exp_list:
             years.append(e.year)
             count.append(e.number)
-        if not years:
+        if len(years) < 2 :
             return models.Model.save(self)
 
         # Prepare plot

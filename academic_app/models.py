@@ -82,32 +82,26 @@ class Colloque(models.Model):
         return self.description_fr
 
 
-class Expertise(models.Model):
-    visible = models.BooleanField()
+class ExpertiseStatistique(models.Model):
     year = models.PositiveIntegerField(
             validators=[
                 MinValueValidator(1900),
                 MaxValueValidator(datetime.datetime.now().year)],
             help_text="Utilisez le format suivant: YYYY")
-    description_fr = RichTextField()
-    description_en = RichTextField()
+    number = models.PositiveIntegerField(help_text="Nombre d'expertises "
+            "effectuées l'année considérée.")
 
     def save(self, *args, **kwargs):
-        exp_list = Expertise.objects.order_by('-year')
+        exp_list = ExpertiseStatistique.objects.order_by('-year')
 
         # Fill years and count with what is needed
-        d = {}
-        for e in exp_list:
-            if str(e.year) in d:
-                d[str(e.year)] = d[str(e.year)] + 1
-            else:
-                d[str(e.year)] = 1
-        tup = sorted([(int(k), v) for k, v in d.items()], key=lambda x: x[0])
         years = []
         count = []
-        for (t1, t2) in tup:
-            years.append(t1)
-            count.append(t2)
+        for e in exp_list:
+            years.append(e.year)
+            count.append(e.number)
+        if not years:
+            return models.Model.save(self)
 
         # Prepare plot
         import matplotlib
@@ -124,7 +118,7 @@ class Expertise(models.Model):
         plt.xticks(range(min(years), max(years) + 1, 1), fontsize=13)
         plt.yticks(range(min(count), max(count) + 1, 1), fontsize=14)
 
-        path = 'academic_app/static/images/'
+        path = 'academic_app/static/images/' #FIXME: Use env var.
 
         # Fr
         plt.xlabel("Années", fontsize=16)
@@ -141,6 +135,15 @@ class Expertise(models.Model):
 
         return models.Model.save(self)
 
+
+class Expertise(models.Model):
+    year = models.PositiveIntegerField(
+            validators=[
+                MinValueValidator(1900),
+                MaxValueValidator(datetime.datetime.now().year)],
+            help_text="Utilisez le format suivant: YYYY")
+    description_fr = RichTextField()
+    description_en = RichTextField()
 
     def __str__(self):
         return self.description_fr

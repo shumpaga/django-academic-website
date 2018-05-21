@@ -9,7 +9,7 @@ from django.utils import timezone
 # Forms
 from .forms import ContactForm
 # Models
-from .models import Post, OccupiedPost, Education, Colloque, Expertise, Enseignement, AcademyTitle, StaticText
+from .models import Post, OccupiedPost, Education, Colloque, Expertise, ExpertiseStatistique, Enseignement, AcademyTitle, StaticText
 # Python packages
 from math import ceil
 
@@ -57,8 +57,14 @@ def colloques(request):
 ###############################################################################
 def expertises(request):
     exp_list = Expertise.objects.order_by('-year')
+    stats = ExpertiseStatistique.objects.order_by('-year')
+
+    count = 0
+    for s in stats:
+        count += s.number
+
     return render(request, 'academic_app/expertises.html',
-            { 'exp': exp_list , 'count' : len(exp_list)})
+            { 'exp': exp_list , 'count' : count })
 
 
 ###############################################################################

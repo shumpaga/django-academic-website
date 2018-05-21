@@ -110,7 +110,7 @@ class ExpertiseStatistique(models.Model):
         import matplotlib
         matplotlib.use('Agg')
         from matplotlib import pyplot as plt
-        plt.figure(figsize=(14, 9))
+        plt.figure(figsize=(16, 9))
         ax = plt.subplot(111)
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
@@ -118,21 +118,21 @@ class ExpertiseStatistique(models.Model):
         ax.get_yaxis().tick_left()
         ax.set_facecolor('#D7CEC7')
         plt.rcParams['axes.facecolor'] = 'black'
-        plt.xticks(range(min(years), max(years) + 1, 1), fontsize=13)
-        plt.yticks(range(min(count), max(count) + 1, 1), fontsize=14)
+        plt.xticks(range(min(years), max(years) + 1, 2), fontsize=10)
+        plt.yticks(range(min(count), max(count) + 1, 2), fontsize=10)
 
         path = 'academic_app/static/images/' #FIXME: Use env var.
 
         # Fr
         plt.xlabel("Années", fontsize=16)
         plt.ylabel("Nombre d'expertises ou études techniques", fontsize=16)
-        plt.bar(years, count, 1 / (max(years) - min(years)), color="#76323F")
+        plt.bar(years, count, 2 / (max(years) - min(years)), color="#76323F")
         plt.savefig(path + 'expFR.png', bbox_inches="tight");
 
         # En
         plt.xlabel("Years", fontsize=16)
         plt.ylabel("Expertises or technical studies count", fontsize=16)
-        plt.bar(years, count, 1 / (max(years) - min(years)), color="#76323F")
+        plt.bar(years, count, 2 / (max(years) - min(years)), color="#76323F")
         plt.savefig(path + 'expEN.png', bbox_inches="tight");
         plt.close()
 

@@ -46,23 +46,21 @@
 
       <ul class="ordered-list">
         {% for e in exp %}
-          {% if e.visible %}
-            <li class="ordered-list-elt">
-              <label class="ordered-list-icon ordered-list-icon-dark"></label>
-              <div class="ordered-list-content">
-                <p class="ordered-list-date">
-                  {{ e.year }}
-                </p>
-                <h3>
-                  {% if LANGUAGE_CODE == "fr" %}
-                    {{ e.description_fr | safe }}
-                  {% else %}
-                    {{ e.description_en | safe }}
-                  {% endif %}
-                </h3>
-              </div>
-            </li>
-          {% endif %}
+          <li class="ordered-list-elt">
+            <label class="ordered-list-icon ordered-list-icon-dark"></label>
+            <div class="ordered-list-content">
+              <p class="ordered-list-date">
+                {{ e.year }}
+              </p>
+              <h3>
+                {% if LANGUAGE_CODE == "fr" %}
+                  {{ e.description_fr | safe }}
+                {% else %}
+                  {{ e.description_en | safe }}
+                {% endif %}
+              </h3>
+            </div>
+          </li>
         {% endfor %}
       </ul>
     </div>

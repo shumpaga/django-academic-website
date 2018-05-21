@@ -91,6 +91,9 @@ class ExpertiseStatistique(models.Model):
     number = models.PositiveIntegerField(help_text="Nombre d'expertises "
             "effectuées l'année considérée.")
 
+    def __str__(self):
+        return self.year
+
     def save(self, *args, **kwargs):
         exp_list = ExpertiseStatistique.objects.order_by('-year')
 

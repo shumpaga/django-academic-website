@@ -57,8 +57,6 @@ class ExpertiseStatistique(models.Model):
     number = models.PositiveIntegerField(help_text="Nombre d'expertises "
             "effectuées l'année considérée.")
 
-    def __str__(self):
-        return str(self.year)
 
     def save(self, *args, **kwargs):
         exp_list = ExpertiseStatistique.objects.order_by('-year')
@@ -87,7 +85,7 @@ class ExpertiseStatistique(models.Model):
         plt.xticks(range(min(years), max(years) + 1, 2), fontsize=10)
         plt.yticks(range(min(count), max(count) + 1, 2), fontsize=10)
 
-        path = 'academic_app/static/images/' #FIXME: Use env var.
+        path = '/home/gbaguidiaissegerard/django-academic-website/static/images/' #FIXME: Use env var.
 
         # Fr
         plt.xlabel("Années", fontsize=16)

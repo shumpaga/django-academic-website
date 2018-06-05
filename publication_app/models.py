@@ -227,15 +227,16 @@ class TheseDoctorale(models.Model):
         return """@PhdThesis{{{},
         Author       = {{{}}},
         Title        = {{{}}},
-        School       = {{{}}},
         Organization = {{{}}},
+        School       = {{{}}},
         Year         = {{{}}},
+        Type         = {{Doctoral Dissertation}},
         URL          = {{{}}},
     }}""".format(self.auteur[:4] + ':' + self.titre[:10].replace(' ', ''),
             self.auteur,
             self.titre,
-            self.ecole,
             self.departement,
+            self.ecole,
             self.annee,
             self.url
             )

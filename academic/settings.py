@@ -21,11 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('secret_key.txt') as f:
+with open('/home/gbaguidiaissegerard/django-academic-website/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.FIXME.com']
+ALLOWED_HOSTS = ['gbaguidiaissegerard.pythonanywhere.com', 'www.gbaguidiaissegerard.com']
 
 # Application definition
 
@@ -87,14 +87,12 @@ WSGI_APPLICATION = 'academic.wsgi.application'
 
 DATABASES = {
     'default': {
-         #'ENGINE': 'django.db.backends.postgresql',
-         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'academic_db',
         'USER': 'academic',
-        #'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
+        'PASSWORD': 'Gerard195218',
+        'HOST': 'gbaguidiaissegerard-751.postgres.pythonanywhere-services.com',
+        'PORT': '10751',
     }
 }
 
@@ -151,7 +149,4 @@ SITE_ID = 1
 
 # DB BACKUP
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-backup_path = ""
-with open('backup_loc.txt') as f:
-    backup_path = f.read().strip()
-DBBACKUP_STORAGE_OPTIONS = {'location': backup_path}
+DBBACKUP_STORAGE_OPTIONS = {'location': '/home/gbaguidiaissegerard/django-academic-website/backup'}

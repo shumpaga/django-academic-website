@@ -25,16 +25,16 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
+#main {
+  background: linear-gradient(to right bottom, #F2F2F2 50%, #E1E1E1 50%);
+}
 .main-body {
   min-height: 700px;
 }
 .section1 {
   padding: 20px;
-  background: linear-gradient(to right bottom, #F2F2F2 50%, #E1E1E1 50%);
 }
 .section2 {
-  padding: 20px;
-  background: linear-gradient(to right bottom, #E1E1E1 50%, #F2F2F2 50%);
 }
 
 
@@ -85,7 +85,8 @@ h1 {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: .2em;
-  font-size:2vw;
+  font-size:3vw;
+  padding-top: 20px;
 }
 h2 {
   font-size: 36px;
@@ -261,7 +262,6 @@ a:hover {
   border: 15px solid #3e2b14;
   padding: 10px;
   */
-  margin-top: 50px;
   padding: 15px 15px 15px;
   background-color: #D7CEC7;
   box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
@@ -274,7 +274,7 @@ a:hover {
                               ABOUT
 **********************************************************************/
 .biography {
-  padding: 20px;
+  padding-top:15px;
   color: white;
 }
 
@@ -572,11 +572,11 @@ a:hover {
   width: 100%;
 }
 .ordered-list-content h3 {
-  font-style: italic;
-  font-size: 1.3em;
+  font-size: 1.0em;
 }
 .ordered-list-content p {
-  font-size: 0.9em;
+  font-style: italic;
+  font-size: 0.85em;
   margin-bottom: 10px;
 }
 .ordered-list-elt {

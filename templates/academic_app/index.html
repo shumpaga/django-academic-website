@@ -4,138 +4,142 @@
 {% block content %}
 <main id="main">
 <div class="container-fluid">
-  <div class="row section1">
-      <div class="col-sm-offset-1 col-sm-10">
-        <div class="container-fluid">
-          <div class="row">
-            <h1>
-              {% if LANGUAGE_CODE == "fr" %}
-                Biographie
-              {% else %}
-                Biography
-              {% endif %}
-            </h1>
-            <hr/>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <img class="img-classic" src="{% static "images/bio.jpg" %}">
+    <div class="row section1">
+        <div class="col-sm-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <h1>
+                            {% if LANGUAGE_CODE == "fr" %}
+                            Biographie
+                            {% else %}
+                            Biography
+                            {% endif %}
+                        </h1>
+                        <hr/>
+                        <div/>
+                            <div/>
+                                <div class="row">
+                                    <img class="img-classic" src="{% static "images/bio.jpg" %}">
+                                </div>
+                                <div class="row">
+                                    <div class="biography">
+                                        {{ about | safe }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-6">
-              <div class="biography">
-                <p>
-                  {{ about | safe }}
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-  </div>
-
-  <div class="row section2">
-    <div class="col-sm-6">
-      <h1>
-        {% if LANGUAGE_CODE == "fr" %}
-          Grades universitaires
-        {% else %}
-          Academic Positions
-        {% endif %}
-      </h1>
-      <hr/>
-      <ul class="ordered-list">
-        {% for a in aca %}
-        <li class="ordered-list-elt">
-          <label class="ordered-list-icon ordered-list-icon-dark"></label>
-          <div class="ordered-list-content">
-            <p class="ordered-list-date">
-              {{ a.date }}
-            </p>
-            <h3>
-              {% if LANGUAGE_CODE == "fr" %}
-                {{ a.titre_fr }}
-              {% else %}
-                {{ a.titre_en }}
-              {% endif %}
-            </h3>
-            <p>
-              {{ a.institution }}
-            </p>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
     </div>
-    <div class="col-sm-6">
-      <h1>
-        Education
-      </h1>
-      <hr/>
-      <ul class="ordered-list">
-        {% for e in edu %}
-        <li class="ordered-list-elt">
-          <label class="ordered-list-icon ordered-list-icon-light"></label>
-          <div class="ordered-list-content">
-            <p class="ordered-list-date">
-              {{ e.date }}
-            </p>
-            <h3>
-              {% if LANGUAGE_CODE == "fr" %}
-                {{ e.diplome_fr }}
-              {% else %}
-                {{ e.diplome_en }}
-              {% endif %}
-            </h3>
-            <p>
-              {{ e.institution }}
-            </p>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
 
-  <div class="row section1">
-    <div class="col-sm-12">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-10 col-sm-offset-1">
+    <div class="row section2">
+        <div class="col-sm-6">
             <h1>
-              {% if LANGUAGE_CODE == "fr" %}
-                Parcours professionel
-              {% else %}
-                Professional background
-              {% endif %}
-            </h1>
-            <hr/>
-          </div>
-        </div>
-      </div>
-      <ul class="ordered-list">
-        {% for p in post %}
-          <li class="ordered-list-elt">
-            <label class="ordered-list-icon ordered-list-icon-light"></label>
-            <div class="ordered-list-content">
-              <p class="ordered-list-date">
-                {{ p.date }}
-              </p>
-              <h3>
                 {% if LANGUAGE_CODE == "fr" %}
-                  {{ p.description_fr | safe }}
+                Grades universitaires
                 {% else %}
-                  {{ p.description_en | safe }}
+                Academic Positions
                 {% endif %}
-              </h3>
-              <p>
-                {{ p.institution }}
-              </p>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
+            </h1>
+            <hr/>
+            <ul class="ordered-list">
+                {% for a in aca %}
+                <li class="ordered-list-elt">
+                <label class="ordered-list-icon ordered-list-icon-dark"></label>
+                <div class="ordered-list-content">
+                    <p class="ordered-list-date">
+                    {{ a.date }}
+                    </p>
+                    <h3>
+                        {% if LANGUAGE_CODE == "fr" %}
+                        {{ a.titre_fr }}
+                        {% else %}
+                        {{ a.titre_en }}
+                        {% endif %}
+                    </h3>
+                    <p>
+                    {{ a.institution }}
+                    </p>
+                </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h1>
+                Education
+            </h1>
+            <hr/>
+            <ul class="ordered-list">
+                {% for e in edu %}
+                <li class="ordered-list-elt">
+                <label class="ordered-list-icon ordered-list-icon-light"></label>
+                <div class="ordered-list-content">
+                    <p class="ordered-list-date">
+                    {{ e.date }}
+                    </p>
+                    <h3>
+                        {% if LANGUAGE_CODE == "fr" %}
+                        {{ e.diplome_fr }}
+                        {% else %}
+                        {{ e.diplome_en }}
+                        {% endif %}
+                    </h3>
+                    <p>
+                    {{ e.institution }}
+                    </p>
+                </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-  </div>
+
+    <div class="row section1">
+        <div class="col-sm-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <h1>
+                            {% if LANGUAGE_CODE == "fr" %}
+                            Parcours professionel
+                            {% else %}
+                            Professional background
+                            {% endif %}
+                        </h1>
+                        <hr/>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul class="ordered-list">
+                        {% for p in post %}
+                        <li class="ordered-list-elt">
+                        <label class="ordered-list-icon ordered-list-icon-light"></label>
+                        <div class="ordered-list-content">
+                            <p class="ordered-list-date">
+                            {{ p.date }}
+                            </p>
+                            <h3>
+                                {% if LANGUAGE_CODE == "fr" %}
+                                {{ p.description_fr | safe | striptags }}
+                                {% else %}
+                                {{ p.description_en | safe | striptags }}
+                                {% endif %}
+                            </h3>
+                            <p>
+                            {{ p.institution }}
+                            </p>
+                        </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>	<!-- /container -->
 </main>
 {% endblock content %}

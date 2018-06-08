@@ -34,9 +34,9 @@
             </p>
             <h3>
               {% if LANGUAGE_CODE == "fr" %}
-                {{ c.description_fr | safe }}
+                {{ c.description_fr | safe | striptags }}
               {% else %}
-                {{ c.description_en | safe }}
+                {{ c.description_en | safe | striptags }}
               {% endif %}
             </h3>
             <p>

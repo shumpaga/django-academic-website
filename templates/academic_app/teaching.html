@@ -50,7 +50,7 @@
               {% endif %}
             </p>
             <h3>
-              {{ e.description | safe }}
+              {{ e.description | safe | striptags }}
             </h3>
             <p>
               {{ e.lieu }}
